@@ -149,6 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
    * -------------------------------------------------------- */
   const revealEls = document.querySelectorAll(
     '.hero-text, .stats-bar, .services-section, ' +
+    '.projects-section, .project-card, ' +
     '.dsa-section, .education-section, .contact-section, ' +
     '.edu-card, .platform-item'
   );
