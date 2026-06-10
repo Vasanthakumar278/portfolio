@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Vasanth Kumar – EEE Student focused on Java, DSA, and modern engineering technologies." />
+  <meta name="author" content="Vasanth Kumar" />
+  <title>Vasanth Kumar | EEE & Programming</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='80'>⚡</text></svg>" />
+</head>
+<body>
+
+  <!-- ===== FIXED BACKGROUND ORBS (glass blurs over these) ===== -->
+  <div class="bg-orb bg-orb-1"></div>
+  <div class="bg-orb bg-orb-2"></div>
+  <div class="bg-orb bg-orb-3"></div>
+  <div class="bg-orb bg-orb-4"></div>
+
+  <!-- Scroll Progress -->
+  <div id="scroll-progress"></div>
+
+  <!-- Mobile Header -->
+  <header class="mobile-header">
+    <div class="mobile-logo">⚡ <span class="y">Vasanth</span> Kumar</div>
+    <button class="sidebar-toggle-btn" id="sidebar-toggle">☰</button>
+  </header>
+
+  <div class="app-layout">
+
+    <!-- ==================== SIDEBAR ==================== -->
+    <aside class="sidebar" id="sidebar">
+      <button class="sidebar-close" id="sidebar-close">✕</button>
+
+      <!-- Profile -->
+      <div class="sidebar-profile">
+        <div class="sidebar-photo-wrap">
+          <div class="sidebar-photo-inner">
+            <img src="vasanth.jpg" alt="Vasanth Kumar" class="sidebar-photo" />
+          </div>
+        </div>
+        <h2 class="sidebar-name">Vasanth Kumar</h2>
+        <p class="sidebar-title">EEE Student &amp; Java Developer</p>
+      </div>
+
+      <div class="sidebar-divider"></div>
+
+      <!-- Personal Info -->
+      <div class="sidebar-info-block">
+        <div class="info-row">
+          <span class="info-label">Degree:</span>
+          <span class="info-val">B.E. EEE</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">State:</span>
+          <span class="info-val">Tamil Nadu</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Focus:</span>
+          <span class="info-val">Java &amp; DSA</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Year:</span>
+          <span class="info-val">2nd Year</span>
+        </div>
+      </div>
+
+      <div class="sidebar-divider"></div>
+
+      <!-- Circular Rings -->
+      <div>
+        <span class="rings-section-label">Language Proficiency</span>
+        <div class="sidebar-rings">
+          <!-- Java -->
+          <div class="ring-item">
+            <div class="ring-svg-wrap">
+              <svg viewBox="0 0 64 64" class="ring-svg">
+                <circle class="ring-track" cx="32" cy="32" r="24"/>
+                <circle class="ring-fill" cx="32" cy="32" r="24" data-pct="78"/>
+              </svg>
+              <span class="ring-pct">78%</span>
+            </div>
+            <span class="ring-label">Java</span>
+          </div>
+          <!-- Python -->
+          <div class="ring-item">
+            <div class="ring-svg-wrap">
+              <svg viewBox="0 0 64 64" class="ring-svg">
+                <circle class="ring-track" cx="32" cy="32" r="24"/>
+                <circle class="ring-fill" cx="32" cy="32" r="24" data-pct="60"/>
+              </svg>
+              <span class="ring-pct">60%</span>
+            </div>
+            <span class="ring-label">Python</span>
+          </div>
+          <!-- C -->
+          <div class="ring-item">
+            <div class="ring-svg-wrap">
+              <svg viewBox="0 0 64 64" class="ring-svg">
+                <circle class="ring-track" cx="32" cy="32" r="24"/>
+                <circle class="ring-fill" cx="32" cy="32" r="24" data-pct="50"/>
+              </svg>
+              <span class="ring-pct">50%</span>
+            </div>
+            <span class="ring-label">C Lang</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-divider"></div>
+
+      <!-- Skill Bars -->
+      <div class="sidebar-bars">
+        <div class="bar-item">
+          <div class="bar-header">
+            <span class="bar-label">DSA Practice</span>
+            <span class="bar-pct">75%</span>
+          </div>
+          <div class="bar-track"><div class="bar-fill" data-width="75"></div></div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-header">
+            <span class="bar-label">Git &amp; GitHub</span>
+            <span class="bar-pct">65%</span>
+          </div>
+          <div class="bar-track"><div class="bar-fill" data-width="65"></div></div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-header">
+            <span class="bar-label">Electrical EE</span>
+            <span class="bar-pct">70%</span>
+          </div>
+          <div class="bar-track"><div class="bar-fill" data-width="70"></div></div>
+        </div>
+      </div>
+
+      <!-- Social -->
+      <div class="sidebar-social">
+        <a href="https://github.com/Vasanthakumar278" target="_blank" rel="noopener" class="social-btn" title="GitHub" id="github-link">GH</a>
+        <a href="https://www.linkedin.com/in/-vasanthakumar-/" target="_blank" rel="noopener" class="social-btn" title="LinkedIn" id="linkedin-link">in</a>
+        <a href="mailto:278vasanthakumar@gmail.com" class="social-btn" title="Email" id="email-link">@</a>
+        <a href="Vasanthakumar_Resume (4).pdf" download class="social-btn" title="Resume">CV</a>
+      </div>
+
+    </aside>
+
+    <!-- Sidebar overlay (mobile) -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main class="main-content" id="main-content">
+
+      <!-- ===== HERO ===== -->
+      <section class="hero-section" id="hero">
+        <div class="hero-text">
+          <span class="hero-tag">Electrical &amp; Electronics Student</span>
+          <h1 class="hero-heading">
+            Building my Amazing<br />
+            Engineering <span style="color:var(--accent)">Journey!</span>
+          </h1>
+          <p class="hero-code-line">
+            <code>&lt;code&gt; I solve problems with Java &amp; DSA. &lt;/code&gt;</code>
+          </p>
+          <a href="#skills" class="cta-btn">EXPLORE NOW</a>
+        </div>
+        <div class="hero-photo-wrap">
+          <img src="vasanth.jpg" alt="Vasanth Kumar" class="hero-photo" />
+        </div>
+      </section>
+
+      <!-- ===== STATS BAR ===== -->
+      <div class="stats-bar">
+        <div class="stat-item">
+          <span class="stat-num">6+</span>
+          <span class="stat-label">Months DSA<br/>Practice</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">3</span>
+          <span class="stat-label">Programming<br/>Languages</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">9</span>
+          <span class="stat-label">DSA Topics<br/>Covered</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">3+</span>
+          <span class="stat-label">Coding<br/>Platforms</span>
+        </div>
+      </div>
+
+      <!-- ===== SERVICES / SKILLS ===== -->
+      <section class="services-section" id="skills">
+        <h2 class="section-heading">My <span class="accent">Skills</span></h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <span class="service-icon">☕</span>
+            <h3>Java Development</h3>
+            <p>Object-Oriented Programming, Data Structures &amp; Algorithms using Java as the primary language for problem solving.</p>
+          </div>
+          <div class="service-card">
+            <span class="service-icon">🧠</span>
+            <h3>Problem Solving</h3>
+            <p>Regular practice on LeetCode, CodeChef &amp; HackerRank covering arrays, trees, graphs, and dynamic programming.</p>
+          </div>
+          <div class="service-card">
+            <span class="service-icon">⚡</span>
+            <h3>Electrical Engineering</h3>
+            <p>Electrical machines, power systems, analog &amp; digital circuits, microprocessors, and control systems theory.</p>
+          </div>
+          <div class="service-card">
+            <span class="service-icon">🔌</span>
+            <h3>Embedded Systems</h3>
+            <p>Arduino programming, Proteus circuit simulation, and microcontroller interfacing for academic projects.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== DSA SECTION ===== -->
+      <section class="dsa-section" id="dsa">
+        <h2 class="section-heading">DSA <span class="accent">Topics</span></h2>
+
+        <!-- Left: tags -->
+        <div class="dsa-tags">
+          <span class="dsa-tag">Arrays</span>
+          <span class="dsa-tag">Strings</span>
+          <span class="dsa-tag">Hashing</span>
+          <span class="dsa-tag">Linked Lists</span>
+          <span class="dsa-tag">Stacks &amp; Queues</span>
+          <span class="dsa-tag">Trees &amp; Graphs</span>
+          <span class="dsa-tag">Recursion</span>
+          <span class="dsa-tag">Sorting &amp; Searching</span>
+          <span class="dsa-tag">Dynamic Programming</span>
+        </div>
+
+        <!-- Right: platforms -->
+        <div class="platform-list">
+          <a href="https://leetcode.com" target="_blank" rel="noopener" class="platform-item" id="leetcode-link">
+            <div class="platform-icon">LC</div>
+            <div>
+              <div class="platform-name">LeetCode</div>
+              <div class="platform-desc">Problem solving &amp; coding concepts</div>
+            </div>
+            <span class="platform-arr">→</span>
+          </a>
+          <a href="https://www.codechef.com" target="_blank" rel="noopener" class="platform-item" id="codechef-link">
+            <div class="platform-icon">CC</div>
+            <div>
+              <div class="platform-name">CodeChef</div>
+              <div class="platform-desc">Competitive challenge participation</div>
+            </div>
+            <span class="platform-arr">→</span>
+          </a>
+          <a href="https://www.hackerrank.com" target="_blank" rel="noopener" class="platform-item" id="hackerrank-link">
+            <div class="platform-icon">HR</div>
+            <div>
+              <div class="platform-name">HackerRank</div>
+              <div class="platform-desc">Programming &amp; domain certifications</div>
+            </div>
+            <span class="platform-arr">→</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- ===== EDUCATION ===== -->
+      <section class="education-section" id="education">
+        <h2 class="section-heading">My <span class="accent">Education</span></h2>
+        <div class="edu-grid">
+          <div class="edu-card">
+            <div class="edu-period">Undergraduate · Current</div>
+            <h3 class="edu-degree">Bachelor of Engineering (B.E.)</h3>
+            <p class="edu-inst">Electrical and Electronics Engineering</p>
+            <p class="edu-desc">Electrical machine designs, power system generation &amp; transmission, analog systems, microprocessors, and control systems with hands-on laboratory practice.</p>
+            <div class="edu-tags">
+              <span class="edu-tag">Electrical Machines</span>
+              <span class="edu-tag">Power Systems</span>
+              <span class="edu-tag">Microprocessors</span>
+            </div>
+          </div>
+          <div class="edu-card">
+            <div class="edu-period">Self-Directed · Ongoing</div>
+            <h3 class="edu-degree">CS Fundamentals &amp; Programming</h3>
+            <p class="edu-inst">Independent Learning</p>
+            <p class="edu-desc">Deepening Java OOP principles, practicing linear and non-linear data structures, learning fundamental algorithmic patterns, and building workflows with Git.</p>
+            <div class="edu-tags">
+              <span class="edu-tag">Java OOP</span>
+              <span class="edu-tag">DSA</span>
+              <span class="edu-tag">Git &amp; GitHub</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== CONTACT ===== -->
+      <section class="contact-section" id="contact">
+        <h2 class="section-heading">Get In <span class="accent">Touch</span></h2>
+        <p class="contact-desc">
+          I am currently looking for fresher roles and internships in electrical systems,
+          Java development, or software support. Feel free to reach out!
+        </p>
+        <a href="mailto:278vasanthakumar@gmail.com" class="cta-btn">Send Me an Email</a>
+        <div class="contact-links-row">
+          <a href="https://github.com/Vasanthakumar278" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/-vasanthakumar-/" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a href="Vasanthakumar_Resume (4).pdf" download>Resume ↓</a>
+        </div>
+      </section>
+
+      <!-- ===== FOOTER ===== -->
+      <footer class="main-footer">
+        <span>⚡ Vasanth Kumar</span>
+        <span>© 2026 · EEE Student Portfolio. All rights reserved.</span>
+      </footer>
+
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
