@@ -192,11 +192,30 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       closeSidebar();
       setTimeout(() => {
-        const offset = window.innerWidth < 900 ? 54 : 60;
-        const top    = target.getBoundingClientRect().top + window.scrollY - offset - 16;
+        const offset = 64 + 16;
+        const top    = target.getBoundingClientRect().top + window.scrollY - offset;
         window.scrollTo({ top, behavior: 'smooth' });
       }, window.innerWidth < 900 ? 320 : 0);
     });
   });
+
+
+  /* --------------------------------------------------------
+   * ACTIVE NAV HIGHLIGHT on scroll
+   * -------------------------------------------------------- */
+  const sections  = document.querySelectorAll('section[id], div[id="hero"]');
+  const navLinks  = document.querySelectorAll('.nav-link-item');
+
+  const activateLink = () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY + 80 >= sec.offsetTop) current = sec.id;
+    });
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+    });
+  };
+  window.addEventListener('scroll', activateLink, { passive: true });
+  activateLink();
 
 });
