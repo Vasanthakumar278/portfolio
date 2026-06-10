@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* --------------------------------------------------------
-   * SMOOTH SCROLL  for anchor links (offset for any sticky bar)
+   * SMOOTH SCROLL (offset for fixed navbar)
    * -------------------------------------------------------- */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', e => {
@@ -192,8 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       closeSidebar();
       setTimeout(() => {
-        const offset = 64 + 16;
-        const top    = target.getBoundingClientRect().top + window.scrollY - offset;
+        const top = target.getBoundingClientRect().top + window.scrollY - 82;
         window.scrollTo({ top, behavior: 'smooth' });
       }, window.innerWidth < 900 ? 320 : 0);
     });
@@ -201,21 +200,99 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* --------------------------------------------------------
-   * ACTIVE NAV HIGHLIGHT on scroll
+   * NAVBAR: scroll-darken + stagger entrance
    * -------------------------------------------------------- */
-  const sections  = document.querySelectorAll('section[id], div[id="hero"]');
-  const navLinks  = document.querySelectorAll('.nav-link-item');
+  const navbar   = document.querySelector('.top-navbar');
+  const navLinks = document.querySelectorAll('.nav-link-item');
+  const pill     = document.getElementById('nav-pill');
+  const desktopNav = document.getElementById('desktop-nav');
 
-  const activateLink = () => {
+  // Darken navbar on scroll
+  const onScroll = () => {
+    navbar && navbar.classList.toggle('scrolled', window.scrollY > 12);
+    updateActiveLink();
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Staggered entrance animation for nav links
+  navLinks.forEach((link, i) => {
+    link.style.opacity  = '0';
+    link.style.transform = 'translateY(-8px)';
+    link.style.transition = `opacity 0.35s ease ${0.08 + i * 0.07}s,
+                              transform 0.4s cubic-bezier(0.34,1.56,0.64,1) ${0.08 + i * 0.07}s,
+                              color 0.22s ease, letter-spacing 0.22s ease`;
+    setTimeout(() => {
+      link.style.opacity   = '';
+      link.style.transform = '';
+    }, 60 + i * 70);
+  });
+
+
+  /* --------------------------------------------------------
+   * SLIDING PILL — follows hover, locks on active
+   * -------------------------------------------------------- */
+  const movePill = (el) => {
+    if (!pill || !desktopNav || !el) return;
+    const navRect  = desktopNav.getBoundingClientRect();
+    const elRect   = el.getBoundingClientRect();
+    pill.style.left    = (elRect.left - navRect.left) + 'px';
+    pill.style.width   = elRect.width + 'px';
+    pill.style.opacity = '1';
+  };
+
+  const hidePill = () => {
+    // Only hide if no active link is hovered
+    const active = document.querySelector('.nav-link-item.active');
+    if (active) movePill(active);
+    else if (pill) pill.style.opacity = '0';
+  };
+
+  navLinks.forEach(link => {
+    link.addEventListener('mouseenter', () => movePill(link));
+    link.addEventListener('mouseleave', hidePill);
+  });
+
+
+  /* --------------------------------------------------------
+   * ACTIVE SECTION HIGHLIGHT + pill lock
+   * -------------------------------------------------------- */
+  const sections = document.querySelectorAll('section[id], div[id="hero"]');
+
+  const updateActiveLink = () => {
     let current = '';
     sections.forEach(sec => {
-      if (window.scrollY + 80 >= sec.offsetTop) current = sec.id;
+      if (window.scrollY + 90 >= sec.offsetTop) current = sec.id;
     });
     navLinks.forEach(link => {
-      link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+      const isActive = link.getAttribute('href') === `#${current}`;
+      link.classList.toggle('active', isActive);
     });
+    // Lock pill on active link
+    const activeLink = document.querySelector('.nav-link-item.active');
+    if (activeLink) movePill(activeLink);
+    else if (pill) pill.style.opacity = '0';
   };
-  window.addEventListener('scroll', activateLink, { passive: true });
-  activateLink();
+
+  updateActiveLink();
+
+
+  /* --------------------------------------------------------
+   * RIPPLE CLICK EFFECT on nav links
+   * -------------------------------------------------------- */
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      const r  = document.createElement('span');
+      const sz = Math.max(link.offsetWidth, link.offsetHeight) * 1.5;
+      r.style.cssText = `
+        position:absolute; border-radius:50%; pointer-events:none;
+        width:${sz}px; height:${sz}px;
+        left:${e.offsetX - sz/2}px; top:${e.offsetY - sz/2}px;
+        background:rgba(250,189,0,0.18);
+        transform:scale(0); animation:ripple 0.5s ease-out forwards;
+      `;
+      link.appendChild(r);
+      setTimeout(() => r.remove(), 550);
+    });
+  });
 
 });
