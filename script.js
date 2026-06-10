@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       closeSidebar();
       setTimeout(() => {
-        const offset = window.innerWidth < 900 ? 54 : 0;
+        const offset = window.innerWidth < 900 ? 54 : 60;
         const top    = target.getBoundingClientRect().top + window.scrollY - offset - 16;
         window.scrollTo({ top, behavior: 'smooth' });
       }, window.innerWidth < 900 ? 320 : 0);
